@@ -1,0 +1,47 @@
+//SmartPhones
+@include mediaMobile {
+  header {
+    .menu-icon {
+      opacity: 100;
+    }
+
+    .navbar {
+      display: none;
+    }
+  }
+
+  .hero {
+    p {
+      margin: 1em 1em;
+    }
+  }
+}
+
+//Tablets and Small Laptops
+@include mediaTablet {
+  .menu-icon {
+    opacity: 100;
+  }
+
+  .navbar {
+    display: none;
+  }
+}
+
+//Desktops and Laptops
+@include mediaLaptop {
+  .menu-icon {
+    opacity: 0;
+  }
+
+  .navbar {
+    display: block;
+  }
+}
+
+//Wide Screens
+@include mediaDesktop {
+  .menu-icon {
+    opacity: 0;
+  }
+}

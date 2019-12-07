@@ -1,0 +1,14 @@
+/* typography  */
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900|Raleway:300,400,500,700,900");
+$font-family: "Montserrat", Verdana, Geneva, sans-serif;
+$font-family-secondary: "Raleway", Verdana, Geneva, sans-serif;
+
+/* colors */
+$primary: #fff;
+$secondary: #e3117c;
+
+/* breakpoints for responsiveness */
+$breakpointDesktop: 1200px;
+$breakpointLaptop: 960px;
+$breakpointTablet: 768px;
+$breakpointMobile: 500px;

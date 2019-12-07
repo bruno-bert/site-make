@@ -1,15 +1,14 @@
-const cms = require('./src/cms')
+const cms = require("./src/cms")
 module.exports = {
-  
   siteMetadata: {
     title: `Gatsby Website Builder`,
     description: `This starter helps to create websites from content on Content Management Systems.`,
     author: `Bruno Bertoni de Paula`,
-    
-    ...cms
 
+    ...cms,
   },
   plugins: [
+    `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,

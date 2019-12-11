@@ -17,6 +17,7 @@ export const metaData = graphql`
           title
           subTitle
           backgroundImage
+          logoImage
           callToAction {
             text
             href

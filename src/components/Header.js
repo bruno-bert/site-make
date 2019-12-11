@@ -1,5 +1,4 @@
 import React from "react"
-import Image from "./Image"
 import { Link } from "gatsby"
 import { CmsFromProps } from "../helpers/CmsHelper"
 

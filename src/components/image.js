@@ -17,6 +17,7 @@ import { useImages } from "../hooks/use-images"
 const Image = ({ src, className, alt, srcObject, optimized }) => {
   const data = useImages()
   const [img] = data.images.nodes.filter(img => img.relativePath === src)
+
   if (img) {
     if (optimized)
       return (

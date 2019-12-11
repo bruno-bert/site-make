@@ -1,6 +1,8 @@
 //SmartPhones
 @include mediaMobile {
   header {
+    border-bottom: 0px;
+
     .menu-icon {
       opacity: 100;
     }
@@ -11,7 +13,12 @@
   }
 
   .hero {
+    h1 {
+      font-size: 4em;
+    }
+
     p {
+      font-size: 1em;
       margin: 1em 1em;
     }
   }

@@ -1,4 +1,4 @@
-const cms = require("./src/cms")
+const cms = require("./src/data/cms")
 module.exports = {
   siteMetadata: {
     title: `Gatsby Website Builder`,
@@ -10,7 +10,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-sass`,
     `gatsby-plugin-react-helmet`,
-    `gatsby-transformer-inline-svg`,
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {

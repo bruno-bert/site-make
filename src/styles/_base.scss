@@ -14,6 +14,7 @@ header {
 
   .navbar {
     margin-right: 2em;
+
     ul {
       li {
         padding: 1em 1.3em;
@@ -39,6 +40,25 @@ header {
   }
 
   #menuToggle {
+    @include easeOut;
+
+    &.close {
+      transform: rotate(180deg);
+
+      span {
+        transform: rotate(45deg);
+
+        &:before {
+          opacity: 0;
+        }
+
+        &:after {
+          opacity: 100;
+          transform: rotate(90deg) translate(-5px, 0px);
+        }
+      }
+    }
+
     background: $secondary-color;
     display: block;
     position: fixed;
@@ -48,34 +68,35 @@ header {
     width: 46px;
     z-index: 9999;
     border-radius: 5px;
-  }
-  #menuToggle span {
-    background: white;
-    display: block;
-    height: 6%;
-    left: 20%;
-    position: absolute;
-    top: 45%;
-    width: 60%;
-  }
 
-  #menuToggle span:before,
-  #menuToggle span:after {
-    background: white;
-    content: "";
-    display: block;
-    height: 100%;
-    position: absolute;
-    top: -250%;
-    -moz-transform: rotate(0deg);
-    -ms-transform: rotate(0deg);
-    -webkit-transform: rotate(0deg);
-    transform: rotate(0deg);
-    width: 100%;
-  }
+    span {
+      background: white;
+      display: block;
+      height: 6%;
+      left: 20%;
+      position: absolute;
+      top: 45%;
+      width: 60%;
 
-  #menuToggle span:after {
-    top: 250%;
+      &:before,
+      &:after {
+        background: white;
+        content: "";
+        display: block;
+        height: 100%;
+        position: absolute;
+        top: -250%;
+        -moz-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        -webkit-transform: rotate(0deg);
+        transform: rotate(0deg);
+        width: 100%;
+      }
+
+      &:after {
+        top: 250%;
+      }
+    }
   }
 }
 

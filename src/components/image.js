@@ -27,7 +27,7 @@ const Image = ({ src, className, alt, srcObject, optimized }) => {
           fixed={img.childImageSharp.fixed}
         />
       )
-    else return <img class={className} alt={alt} src={srcObject} />
+    else return <img className={className} alt={alt} src={srcObject} />
   } else return null
 }
 

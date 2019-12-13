@@ -1,20 +1,29 @@
 import React from "react"
 import { SectionFromCms } from "../helpers/CmsHelper"
-
 import Image from "./Image"
-import heroLogo from "../images/landing/hero-logo.svg"
 
 export default function Hero(props) {
   const meta = SectionFromCms(props, "hero")
+  let logo = null
+
+  if (meta.logoImage) {
+    try {
+      logo = require(`../images/${meta.logoImage}`)
+    } catch (error) {
+      console.error("Could not load logo: " + error)
+    }
+  }
 
   return (
     <>
-      {meta.logoImage && <Image
-        className="logo"
-        alt="logo"
-        src={meta.logoImage}
-        srcObject={heroLogo}
-      />}
+      {logo && (
+        <Image
+          className="logo"
+          alt="logo"
+          src={meta.logoImage}
+          srcObject={logo}
+        />
+      )}
 
       <h1 dangerouslySetInnerHTML={{ __html: meta.title }}>{}</h1>
       <p>{meta.subTitle}</p>

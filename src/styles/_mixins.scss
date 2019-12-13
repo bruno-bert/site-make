@@ -1,4 +1,5 @@
 /* Media Queries*/
+
 @mixin mediaMobile {
   @media screen and (max-width: $breakpointMobile) {
     @content;

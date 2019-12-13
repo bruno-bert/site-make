@@ -7,9 +7,11 @@
       opacity: 100;
     }
 
-    .navbar {
+    .show-menu {
       display: none;
     }
+
+    @include sidemenu;
   }
 
   .hero {
@@ -26,12 +28,16 @@
 
 //Tablets and Small Laptops
 @include mediaTablet {
-  .menu-icon {
-    opacity: 100;
-  }
+  header {
+    .menu-icon {
+      opacity: 100;
+    }
 
-  .navbar {
-    display: none;
+    .show-menu {
+      display: none;
+    }
+
+    @include sidemenu;
   }
 }
 
@@ -41,8 +47,8 @@
     opacity: 0;
   }
 
-  .navbar {
-    display: block;
+  .show-menu {
+    display: inherit;
   }
 }
 
@@ -50,5 +56,9 @@
 @include mediaDesktop {
   .menu-icon {
     opacity: 0;
+  }
+
+  .show-menu {
+    display: inherit;
   }
 }

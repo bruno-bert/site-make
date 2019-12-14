@@ -1,11 +1,22 @@
 import React from "react"
 import { Link } from "gatsby"
-import { CmsFromProps } from "../helpers/CmsHelper"
 import { useState } from "react"
+import PropTypes from "prop-types"
+import Image from "./Image"
 
-export default function Header(props) {
+const Header = props => {
+  const data = props.data
   const [showMenu, setShowMenu] = useState(false)
-  const links = CmsFromProps(props).links
+  const links = data.links
+
+  let logo = null
+  if (data.logoImage) {
+    try {
+      logo = require(`../images/${data.logoImage}`)
+    } catch (error) {
+      console.error("Could not load logo: " + error)
+    }
+  }
 
   const toggleMenu = () => {
     if (!showMenu) {
@@ -19,9 +30,21 @@ export default function Header(props) {
     }
   }
 
+  const logoStyle = data.styles && data.styles.logoStyle
+
   return (
     <header className="header">
-      {/*<Image className="logo" alt="logo" src="landing/logo.png" optimized />*/}
+      <div id="logo-placeholder">
+        {data.logoImage && (
+          <Image
+            imgStyle={logoStyle}
+            className="logo"
+            alt="logo"
+            src={data.logoImage}
+            srcObject={logo}
+          />
+        )}
+      </div>
 
       <a href="#" className="menu-icon" id="menuToggle" onClick={toggleMenu}>
         <span></span>
@@ -39,3 +62,9 @@ export default function Header(props) {
     </header>
   )
 }
+
+Header.propTypes = {
+  data: PropTypes.object.isRequired,
+}
+
+export default Header

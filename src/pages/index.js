@@ -5,19 +5,42 @@ import Header from "../components/Header"
 import Hero from "../components/Hero"
 import Footer from "../components/Footer"
 import SectionWrapper from "../components/SectionWrapper"
+import { useMetaData } from "../hooks/use-meta"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
+const IndexPage = () => {
+  const data = useMetaData()
+  const meta = data.site.siteMetadata
 
-    <Header />
+  /** header section */
+  const headerSection = meta.sections.filter(
+    section => section.type === "header"
+  )
 
-    <SectionWrapper className="hero" sectionType="hero">
-      <Hero />
-    </SectionWrapper>
+  /** other sections */
+  const sections = meta.sections.filter(section => section.type != "header")
 
-    <Footer />
-  </Layout>
-)
+  return (
+    <Layout>
+      <SEO title="Home" />
+
+      {/** header section */}
+      {headerSection &&
+        headerSection.map(item => <Header key={item.id} data={item.header} />)}
+
+      {/** other sections */}
+      {sections.map(item => (
+        <SectionWrapper
+          key={item.id}
+          className={item.className || item.type}
+          data={item[item.type]}
+        >
+          {item.type === "hero" && <Hero data={item[item.type]} />}
+        </SectionWrapper>
+      ))}
+
+      <Footer />
+    </Layout>
+  )
+}
 
 export default IndexPage

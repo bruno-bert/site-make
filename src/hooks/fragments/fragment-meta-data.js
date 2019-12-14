@@ -5,15 +5,28 @@ export const metaData = graphql`
       title
       description
       author
-      links {
-        id
-        description
-        href
-      }
+
       sections {
         id
         type
+        header {
+          styles {
+            navStyle
+            logoStyle
+          }
+          logoImage
+          links {
+            id
+            description
+            href
+          }
+        }
         hero {
+          styles {
+            logoStyle
+            titleStyle
+            subTitleStyle
+          }
           title
           subTitle
           backgroundImage

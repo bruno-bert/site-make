@@ -22,9 +22,10 @@
       align-items: center;
       justify-content: center;
       li {
+        padding-top: 15%;
         a {
           color: set-text-color();
-          font-size: 1em;
+          font-size: 2em;
         }
       }
     }

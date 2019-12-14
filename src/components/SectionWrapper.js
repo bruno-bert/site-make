@@ -1,13 +1,10 @@
 import React from "react"
-import { SectionFromCms } from "../helpers/CmsHelper"
 import { useImages } from "../hooks/use-images"
-import { useMetaData } from "../hooks/use-meta"
 
 import BackgroundImage from "gatsby-background-image"
 
 export default function SectionWrapper(props) {
-  const data = useMetaData()
-  const meta = SectionFromCms(props, props.sectionType)
+  const meta = props.data
   const imageData = useImages()
   const bgImageSrc = meta.backgroundImage
 
@@ -16,7 +13,7 @@ export default function SectionWrapper(props) {
   )
 
   const childrenWithProps = React.Children.map(props.children, child =>
-    React.cloneElement(child, { metadata: data })
+    React.cloneElement(child, { metadata: meta })
   )
 
   return (

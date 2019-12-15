@@ -36,6 +36,12 @@ export const metaData = graphql`
             href
           }
         }
+        gallery {
+          images {
+            src
+            alt
+          }
+        }
       }
     }
   }

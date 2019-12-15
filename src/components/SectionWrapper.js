@@ -12,19 +12,19 @@ export default function SectionWrapper(props) {
     img => img.relativePath === bgImageSrc
   )
 
-  const childrenWithProps = React.Children.map(props.children, child =>
-    React.cloneElement(child, { metadata: meta })
-  )
+  //const childrenWithProps = React.Children.map(props.children, child =>
+  //  React.cloneElement(child, { metadata: meta })
+  //)
 
   return (
-    <section className={props.className}>
+    <section id={props.id} className={props.className}>
       {bgImage && (
         <BackgroundImage Tag="div" fluid={bgImage.childImageSharp.fluid}>
-          {childrenWithProps}
+          {props.children}
         </BackgroundImage>
       )}
 
-      {!bgImage && <div>{childrenWithProps}</div>}
+      {!bgImage && <div>{props.children}</div>}
     </section>
   )
 }

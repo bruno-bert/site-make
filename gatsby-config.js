@@ -12,15 +12,6 @@ module.exports = {
     `gatsby-plugin-react-helmet`,
 
     {
-      resolve: `gatsby-source-instagram`,
-      options: {
-        username: `username`,
-        access_token: "a valid access token",
-        instagram_id: "your instagram_business_account id",
-      },
-    },
-
-    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,

@@ -3,6 +3,7 @@ import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import Header from "../components/Header"
 import Hero from "../components/Hero"
+import Gallery from "../components/Gallery"
 import Footer from "../components/Footer"
 import SectionWrapper from "../components/SectionWrapper"
 import { useMetaData } from "../hooks/use-meta"
@@ -18,7 +19,7 @@ const IndexPage = () => {
 
   /** other sections */
   const sections = meta.sections.filter(section => section.type != "header")
-
+  console.log("sections", sections)
   return (
     <Layout>
       <SEO title="Home" />
@@ -31,10 +32,12 @@ const IndexPage = () => {
       {sections.map(item => (
         <SectionWrapper
           key={item.id}
+          id={item.id}
           className={item.className || item.type}
           data={item[item.type]}
         >
           {item.type === "hero" && <Hero data={item[item.type]} />}
+          {item.type === "gallery" && <Gallery data={item[item.type]} />}
         </SectionWrapper>
       ))}
 

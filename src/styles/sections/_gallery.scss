@@ -1,10 +1,14 @@
+/** variables */
+$gallery-bg-color: #fafafa;
+$img-border-color: #ddd;
+
 .gallery {
   width: 100%;
 
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #fcfcfc;
+  background-color: $gallery-bg-color;
 
   .header {
     padding-top: 5%;
@@ -12,6 +16,7 @@
     width: 100%;
     margin: 0 auto;
     text-align: center;
+    color: set_text_color($gallery-bg-color);
 
     line-height: 3em;
 
@@ -27,30 +32,15 @@
 
     h5 {
       font-size: 1rem;
-      color: gray;
       font-weight: 300;
       font-style: italic;
+      color: set_text-color($gallery-bg-color);
     }
   }
 
   .gallery-inner {
-    margin-left: 2%;
-    margin-right: 2%;
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
-    width: 0 auto;
-    flex-wrap: wrap;
-
-    .photos_column {
-      flex: 25%;
-      max-width: 25%;
-      text-align: center;
-    }
-
-    img {
-      cursor: pointer;
-    }
+    width: 70%;
+    margin: 0 auto;
   }
 
   @media screen and (max-width: 1600px) {

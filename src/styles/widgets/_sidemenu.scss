@@ -24,7 +24,7 @@
       li {
         padding-top: 15%;
         a {
-          color: set-text-color();
+          color: set-text-color($background-color);
           font-size: 2em;
         }
       }

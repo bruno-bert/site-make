@@ -1,53 +1,89 @@
-import React from "react"
-import Image from "./Image"
-import { chunk } from "../helpers"
+import React, { useState } from "react"
+import Carousel, { Modal, ModalGateway } from "react-images"
+import { Box, Link } from "rebass"
+import { chunk, sum, carouselFormatters } from "../helpers"
+import GatsbyImage from "gatsby-image"
 
-export default function Gallery(props) {
-  //const images = props.data.images
-  //const data = props.data
+const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
+  const aspectRatios = images.map(image => image.aspectRatio)
+  const rowAspectRatioSumsByBreakpoints = itemsPerRowByBreakpoints.map(
+    itemsPerRow =>
+      chunk(aspectRatios, itemsPerRow).map(rowAspectRatios =>
+        sum(rowAspectRatios)
+      )
+  )
 
-  /** temporary*/
-  const number_of_columns = 4
-  const data = {
-    title: "Meu Trabalho",
-    subtitle:
-      "Inspiração - Veja na galeria de fotos alguns de meus trabalhos recentes",
-    images: [
-      { src: "landing/image-1.jpg", alt: "image1" },
-      { src: "landing/image-2.jpg", alt: "image2" },
-      { src: "landing/image-3.jpg", alt: "image3" },
-      { src: "landing/image-4.jpg", alt: "image4" },
-      { src: "landing/image-5.jpg", alt: "image5" },
-      { src: "landing/image-6.jpg", alt: "image6" },
-      { src: "landing/image-7.jpg", alt: "image7" },
-      { src: "landing/image-8.jpg", alt: "image8" },
-      { src: "landing/image-9.jpg", alt: "image9" },
-      { src: "landing/image-10.jpg", alt: "image10" },
-      { src: "landing/image-11.jpg", alt: "image11" },
-      { src: "landing/image-12.jpg", alt: "image12" },
-      { src: "landing/image-13.jpg", alt: "image13" },
-      { src: "landing/image-14.jpg", alt: "image14" },
-      { src: "landing/image-15.jpg", alt: "image15" },
-    ],
+  const [modalIsOpen, setModalIsOpen] = useState(false)
+  const [modalCurrentIndex, setModalCurrentIndex] = useState(0)
+
+  const closeModal = () => {
+    setModalIsOpen(false)
+    const header = document.getElementById("header")
+    if (header) header.style.display = "flex"
   }
 
-  const chunked_images = chunk(number_of_columns, data.images)
+  const openModal = imageIndex => {
+    setModalCurrentIndex(imageIndex)
+    setModalIsOpen(true)
+
+    const header = document.getElementById("header")
+    if (header) header.style.display = "none"
+  }
 
   return (
-    <React.Fragment>
-      <div className="header">
-        {data.title && <h3>{data.title}</h3>}
-        {data.subtitle && <h5>{data.subtitle}</h5>}
-      </div>
-      <div className="gallery-inner">
-        {chunked_images.map(image_array => (
-          <div className="photos_column">
-            {image_array.map(image => (
-              <Image src={image.src} alt={image.alt} optimized />
-            ))}
-          </div>
-        ))}
-      </div>
-    </React.Fragment>
+    <Box className="gallery-inner">
+      {images.map((image, i) => (
+        <Link
+          key={image.id}
+          href={image.originalImg}
+          onClick={e => {
+            e.preventDefault()
+            openModal(i)
+          }}
+        >
+          <Box
+            as={GatsbyImage}
+            fluid={image}
+            title={image.caption}
+            width={rowAspectRatioSumsByBreakpoints.map(
+              (rowAspectRatioSums, j) => {
+                const rowIndex = Math.floor(i / itemsPerRowByBreakpoints[j])
+                const rowAspectRatioSum = rowAspectRatioSums[rowIndex]
+
+                return `${(image.aspectRatio / rowAspectRatioSum) * 100}%`
+              }
+            )}
+            css={`
+              display: inline-block;
+              vertical-align: middle;
+              transition: filter 0.3s;
+              :hover {
+                filter: brightness(87.5%);
+              }
+            `}
+          />
+        </Link>
+      ))}
+
+      {ModalGateway && (
+        <ModalGateway>
+          {modalIsOpen && (
+            <Modal onClose={closeModal}>
+              <Carousel
+                views={images.map(({ originalImg, caption }) => ({
+                  source: originalImg,
+                  caption,
+                }))}
+                currentIndex={modalCurrentIndex}
+                formatters={carouselFormatters}
+                components={{ FooterCount: () => null }}
+              />
+            </Modal>
+          )}
+        </ModalGateway>
+      )}
+    </Box>
   )
 }
+
+export default Gallery

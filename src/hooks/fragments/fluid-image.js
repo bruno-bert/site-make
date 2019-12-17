@@ -4,6 +4,7 @@ export const fluidImage = graphql`
     childImageSharp {
       fluid {
         ...GatsbyImageSharpFluid
+        originalImg
       }
     }
   }

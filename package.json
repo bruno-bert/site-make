@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "gatsby-website-builder",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "A complete website generator",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Bruno Bertoni <bruno.bert.jj@gmail.com>",
   "dependencies": {
     "gatsby": "^2.17.11",
     "gatsby-background-image": "^0.9.7",
@@ -14,7 +14,6 @@
     "gatsby-plugin-sass": "^2.1.24",
     "gatsby-plugin-sharp": "^2.2.37",
     "gatsby-source-filesystem": "^2.1.36",
-    "gatsby-source-instagram": "^0.6.1",
     "gatsby-transformer-inline-svg": "0.0.4",
     "gatsby-transformer-sharp": "^2.3.3",
     "node-sass": "^4.13.0",
@@ -22,7 +21,10 @@
     "react": "^16.11.0",
     "react-dom": "^16.11.0",
     "react-helmet": "^5.2.1",
-    "react-svg": "^11.0.3"
+    "react-images": "^1.0.0",
+    "react-svg": "^11.0.3",
+    "rebass": "^3.0.0",
+    "styled-components": "^4.0.0"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
@@ -41,9 +43,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/bruno-bert/site-make"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/bruno-bert/site-make/issues"
   }
 }

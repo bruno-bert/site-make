@@ -7,7 +7,7 @@ header {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  z-index: 9999;
+  z-index: 2;
   background-color: transparent;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   overflow: hidden;
@@ -27,7 +27,7 @@ header {
         float: left;
 
         a {
-          color: set-text-color();
+          color: set-text-color($background-color);
           text-transform: uppercase;
           font-weight: 400;
           background: transparent;

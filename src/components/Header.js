@@ -33,7 +33,7 @@ const Header = props => {
   const logoStyle = data.styles && data.styles.logoStyle
 
   return (
-    <header className="header">
+    <header id="header" className="header">
       <div id="logo-placeholder">
         {data.logoImage && (
           <Image
@@ -46,7 +46,12 @@ const Header = props => {
         )}
       </div>
 
-      <a href="#" className="menu-icon" id="menuToggle" onClick={toggleMenu}>
+      <a
+        href="#menu"
+        className="menu-icon"
+        id="menuToggle"
+        onClick={toggleMenu}
+      >
         <span></span>
       </a>
 

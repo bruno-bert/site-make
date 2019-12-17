@@ -32,7 +32,7 @@
     font-size: 6em;
     font-weight: 300;
     letter-spacing: 2px;
-    color: set-text-color();
+    color: set-text-color($background-color);
 
     span {
       color: $secondary-color;
@@ -44,12 +44,12 @@
     margin-top: 1em;
     font-family: $font-family-secondary;
     font-size: 1.5em;
-    color: set-text-color();
+    color: set-text-color($background-color);
   }
 
   .social-media {
     i {
-      color: set-text-color();
+      color: set-text-color($background-color);
     }
   }
 }

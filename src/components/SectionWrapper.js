@@ -24,7 +24,7 @@ export default function SectionWrapper(props) {
         </BackgroundImage>
       )}
 
-      {!bgImage && <div>{props.children}</div>}
+      {!bgImage && <div className="container">{props.children}</div>}
     </section>
   )
 }

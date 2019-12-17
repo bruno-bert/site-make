@@ -4,13 +4,8 @@ module.exports = {
   className: "gallery",
   gallery: {
     styles: {},
-
-    images: [
-      { src: "landing/image-1.jpg", alt: "image1" },
-      { src: "landing/image-2.jpg", alt: "image2" },
-      { src: "landing/image-3.jpg", alt: "image3" },
-      { src: "landing/image-4.jpg", alt: "image4" },
-      { src: "landing/image-5.jpg", alt: "image5" },
-    ],
+    title: "Meu Trabalho",
+    subtitle: "Confira na galeria a seguir alguns de meus trabalhos recentes",
+    galleryPath: "gallery",
   },
 }

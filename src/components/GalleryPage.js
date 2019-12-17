@@ -3,46 +3,30 @@ import Gallery from "./Gallery"
 import { useImages } from "../hooks/use-images"
 
 export default function GalleryPage(props) {
+  const data = props.data
   const allImages = useImages()
 
+  /** gets only the images from the gallery directory */
   const nodes = allImages.images.nodes.filter(
     node =>
       node.childImageSharp !== null &&
-      String(node.relativePath).includes("gallery")
+      String(node.relativePath).includes(data.galleryPath + "/")
   )
-
-  const data2 = {
-    title: "Meu Trabalho",
-    subtitle: "Na galeria de fotos alguns de meus trabalhos recentes",
-  }
-
-  const images2 = nodes.map(node => ({
-    id: node.id,
-    ...node.childImageSharp.fluid,
-  }))
 
   return (
     <React.Fragment>
       <div className="header">
-        {data2.title && <h3>{data2.title}</h3>}
-        {data2.subtitle && <h5>{data2.subtitle}</h5>}
+        {data.title && <h3>{data.title}</h3>}
+        {data.subtitle && <h5>{data.subtitle}</h5>}
       </div>
 
-      <Gallery images={images2} itemsPerRow={[2, 3]} />
+      <Gallery
+        images={nodes.map(node => ({
+          id: node.id,
+          ...node.childImageSharp.fluid,
+        }))}
+        itemsPerRow={[2, 3]}
+      />
     </React.Fragment>
   )
-
-  /*
-  <div className="gallery-inner">
-  {chunked_images.map((image_array, idx) => (
-    <div key={idx} className="photos_column">
-      {image_array.map((image, idx) => (
-        <a key={idx} href={require(`../images/${image.src}`)}>
-          <Image src={image.src} alt={image.alt} optimized />
-        </a>
-      ))}
-    </div>
-  ))}
-</div>
-*/
 }

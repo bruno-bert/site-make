@@ -37,10 +37,9 @@ export const metaData = graphql`
           }
         }
         gallery {
-          images {
-            src
-            alt
-          }
+          title
+          subtitle
+          galleryPath
         }
       }
     }

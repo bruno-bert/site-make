@@ -12,9 +12,12 @@ module.exports = {
     subTitle: "Maquiagem Para Festas - Noivas - Infantil",
     backgroundImage: "landing/hero-background.jpg",
     logoImage: "landing/hero-logo.svg",
+    socialMedia: [{ className: "fab fa-instagram" }],
     callToAction: {
+      id: "Setmore_button_iframe",
       text: "Agende seu Horário",
-      href: "#agendar",
+      href:
+        "https://my.setmore.com/bookingpage/4426feab-9602-4c48-a963-aa6fe8f69b37",
     },
   },
 }

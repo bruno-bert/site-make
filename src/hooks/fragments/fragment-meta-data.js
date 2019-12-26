@@ -31,7 +31,11 @@ export const metaData = graphql`
           subTitle
           backgroundImage
           logoImage
+          socialMedia {
+            className
+          }
           callToAction {
+            id
             text
             href
           }

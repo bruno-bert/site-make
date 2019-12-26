@@ -45,13 +45,16 @@
     font-family: $font-family-secondary;
     font-size: 1.5em;
     color: set-text-color($background-color);
-  }
+    transition: all 0.4s;
 
-  .social-media {
-    i {
-      color: set-text-color($background-color);
+    &:hover {
+      font-size: 1.6rem;
     }
   }
+
+  @include social-media;
+
+  @include cta;
 }
 
 //SmartPhones
@@ -64,7 +67,14 @@
     p {
       font-size: 1em;
       margin: 1em 1em;
+
+      &:hover {
+        font-size: 1.1rem;
+      }
     }
+
+    @include social-media-mobile;
+    @include cta-mobile;
   }
 }
 

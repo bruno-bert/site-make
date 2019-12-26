@@ -25,6 +25,9 @@ export default function Hero(props) {
 
   const logoStyle = data.styles && data.styles.logoStyle
 
+  const socialMedia = data.socialMedia
+  const callToAction = data.callToAction
+
   return (
     <>
       {logo && (
@@ -41,6 +44,27 @@ export default function Hero(props) {
         {}
       </h1>
       <p style={subTitleStyle}>{data.subTitle}</p>
+
+      {socialMedia && (
+        <ul className="social-media">
+          {socialMedia.map(item => (
+            <li>
+              <i className={item.className}></i>
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {callToAction && (
+        <a
+          id={callToAction.id}
+          href={callToAction.href}
+          class="button instagram"
+        >
+          <span class="gradient"></span>
+          {callToAction.text}
+        </a>
+      )}
     </>
   )
 }

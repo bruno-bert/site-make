@@ -1,10 +1,6 @@
 const cms = require("./src/data/cms")
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Website Builder`,
-    description: `This starter helps to create websites from content on Content Management Systems.`,
-    author: `Bruno Bertoni de Paula`,
-
     ...cms,
   },
   plugins: [
@@ -23,24 +19,63 @@ module.exports = {
       options: {
         useMozJpeg: false,
         stripMetadata: true,
-        defaultQuality: 100,
+        defaultQuality: 75,
       },
     },
     `gatsby-transformer-sharp`,
+    `gatsby-plugin-sitemap`,
+    {
+      resolve: `gatsby-plugin-canonical-urls`,
+      options: {
+        siteUrl: `https://www.giselebertoni.com.br`,
+        stripQueryString: true,
+      },
+    },
+
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `gisele-bertoni-make`,
+        short_name: `gimake`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#e3117c`,
+        theme_color: `#e3117c`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`, //512 x 512
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `#e3117c`,
+        showSpinner: true,
+      },
+    },
+
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Montserrat`,
+            variants: [`300`, `400`, `500`, `700`, `900`],
+          },
+          {
+            family: `Raleway`,
+            variants: [`300`, `400`, `500`, `700`, `900`],
+          },
+        ],
+      },
+    },
+
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
+      },
+    },
+
+    `gatsby-plugin-offline`,
   ],
 }

@@ -10,15 +10,23 @@ import { useMetaData } from "../hooks/use-meta"
 
 const IndexPage = () => {
   const data = useMetaData()
-  const meta = data.site.siteMetadata
+  const globalStyles = data.site.siteMetadata.globalStyles
+
+  const meta = data.site.siteMetadata.sections.map(item => {
+    item[item.type] = { ...item[item.type], globalStyles }
+    return item
+  })
 
   /** header section */
-  const headerSection = meta.sections.filter(
-    section => section.type === "header"
-  )
+  const headerSection = meta.filter(section => section.type === "header")
+
+  /** footer section */
+  const footerSection = meta.filter(section => section.type === "footer")
 
   /** other sections */
-  const sections = meta.sections.filter(section => section.type !== "header")
+  const sections = meta.filter(
+    section => section.type !== "header" && section.type !== "footer"
+  )
 
   return (
     <Layout>
@@ -41,7 +49,9 @@ const IndexPage = () => {
         </SectionWrapper>
       ))}
 
-      <Footer />
+      {/** footer section */}
+      {footerSection &&
+        footerSection.map(item => <Footer key={item.id} data={item.footer} />)}
     </Layout>
   )
 }

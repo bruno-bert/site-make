@@ -3,6 +3,8 @@ import Image from "./Image"
 
 export default function Hero(props) {
   const data = props.data
+  const globalStyles = data.globalStyles
+
   let logo = null
 
   if (data.logoImage) {
@@ -48,7 +50,7 @@ export default function Hero(props) {
       {socialMedia && (
         <ul className="social-media">
           {socialMedia.map(item => (
-            <li>
+            <li key={item.className}>
               <i className={item.className}></i>
             </li>
           ))}
@@ -58,10 +60,12 @@ export default function Hero(props) {
       {callToAction && (
         <a
           id={callToAction.id}
+          target="_blank"
           href={callToAction.href}
-          class="button instagram"
+          className="cta"
+          rel="noopener noreferrer"
         >
-          <span class="gradient"></span>
+          <span id={callToAction.id} className="gradient"></span>
           {callToAction.text}
         </a>
       )}

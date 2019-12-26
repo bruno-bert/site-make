@@ -5,6 +5,21 @@ export const metaData = graphql`
       title
       description
       author
+      siteUrl
+      globalStyles {
+        typography {
+          fontFamily
+          fontFamilySecondary
+        }
+        colors {
+          backgroundColor
+          primaryColor
+          secondaryColor
+          terciaryColor
+          lightTextColor
+          darkTextColor
+        }
+      }
 
       sections {
         id

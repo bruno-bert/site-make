@@ -22,7 +22,7 @@ module.exports = {
   },
 }
 
-/**
+/** example on how to style the texts
  *  styles: {
       logoStyle: '{"width": "200px", "height": "200px"}',
       titleStyle: '{"color": "green"}',

@@ -4,6 +4,8 @@ import { useImages } from "../hooks/use-images"
 
 export default function GalleryPage(props) {
   const data = props.data
+  const globalStyles = data.globalStyles
+
   const allImages = useImages()
 
   /** gets only the images from the gallery directory */

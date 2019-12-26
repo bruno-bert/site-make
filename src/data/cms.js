@@ -2,8 +2,11 @@ const meta = require("./meta")
 const header = require("./header")
 const hero = require("./hero")
 const gallery = require("./gallery")
+const footer = require("./footer")
+const globalStyles = require("./globalStyles")
 
 module.exports = {
   ...meta,
-  sections: [header, hero, gallery],
+  ...globalStyles,
+  sections: [header, hero, gallery, footer],
 }

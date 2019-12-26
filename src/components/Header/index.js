@@ -2,17 +2,22 @@ import React from "react"
 import { Link } from "gatsby"
 import { useState } from "react"
 import PropTypes from "prop-types"
-import Image from "./Image"
+import Image from "../Image"
+import HeaderStyle from "./styles"
 
 const Header = props => {
   const data = props.data
+  const globalStyles = data.globalStyles
+
+  console.log("data", data)
+
   const [showMenu, setShowMenu] = useState(false)
   const links = data.links
 
   let logo = null
   if (data.logoImage) {
     try {
-      logo = require(`../images/${data.logoImage}`)
+      logo = require(`../../images/${data.logoImage}`)
     } catch (error) {
       console.error("Could not load logo: " + error)
     }
@@ -33,7 +38,7 @@ const Header = props => {
   const logoStyle = data.styles && data.styles.logoStyle
 
   return (
-    <header id="header" className="header">
+    <HeaderStyle id="header" className="header" styles={globalStyles}>
       <div id="logo-placeholder">
         {data.logoImage && (
           <Image
@@ -64,7 +69,7 @@ const Header = props => {
           ))}
         </ul>
       </nav>
-    </header>
+    </HeaderStyle>
   )
 }
 

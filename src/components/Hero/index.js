@@ -1,5 +1,6 @@
 import React from "react"
-import Image from "./Image"
+import Image from "../Image"
+import HeroStyle from "./styles"
 
 export default function Hero(props) {
   const data = props.data
@@ -9,7 +10,7 @@ export default function Hero(props) {
 
   if (data.logoImage) {
     try {
-      logo = require(`../images/${data.logoImage}`)
+      logo = require(`../../images/${data.logoImage}`)
     } catch (error) {
       console.error("Could not load logo: " + error)
     }
@@ -31,7 +32,7 @@ export default function Hero(props) {
   const callToAction = data.callToAction
 
   return (
-    <>
+    <HeroStyle id="hero" className="hero" styles={globalStyles}>
       {logo && (
         <Image
           imgStyle={logoStyle}
@@ -51,7 +52,9 @@ export default function Hero(props) {
         <ul className="social-media">
           {socialMedia.map(item => (
             <li key={item.className}>
-              <i className={item.className}></i>
+              <a href={item.href} target="_blank">
+                <i className={item.className}></i>
+              </a>
             </li>
           ))}
         </ul>
@@ -69,6 +72,6 @@ export default function Hero(props) {
           {callToAction.text}
         </a>
       )}
-    </>
+    </HeroStyle>
   )
 }

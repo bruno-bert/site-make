@@ -1,14 +1,15 @@
 import React from "react"
+import FooterStyle from "./styles"
 
 export default function Footer(props) {
   const data = props.data
   const globalStyles = data.globalStyles
 
   return (
-    <footer className="footer">
+    <FooterStyle className="footer" styles={globalStyles}>
       © {new Date().getFullYear()}, Built with
       {` `}
       <a href="https://www.gatsbyjs.org">Gatsby</a>
-    </footer>
+    </FooterStyle>
   )
 }

@@ -26,6 +26,7 @@ export const metaData = graphql`
         type
         header {
           styles {
+            headerStyle
             navStyle
             logoStyle
           }
@@ -48,6 +49,7 @@ export const metaData = graphql`
           logoImage
           socialMedia {
             className
+            href
           }
           callToAction {
             id

@@ -9,8 +9,6 @@ const Header = props => {
   const data = props.data
   const globalStyles = data.globalStyles
 
-  console.log("data", data)
-
   const [showMenu, setShowMenu] = useState(false)
   const links = data.links
 
@@ -36,9 +34,15 @@ const Header = props => {
   }
 
   const logoStyle = data.styles && data.styles.logoStyle
+  const headerStyle = data.styles && data.styles.headerStyle
 
   return (
-    <HeaderStyle id="header" className="header" styles={globalStyles}>
+    <HeaderStyle
+      id="header"
+      className="header"
+      css={headerStyle}
+      styles={globalStyles}
+    >
       <div id="logo-placeholder">
         {data.logoImage && (
           <Image

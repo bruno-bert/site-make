@@ -12,7 +12,12 @@ module.exports = {
     subTitle: "Maquiagem Para Festas - Noivas - Infantil",
     backgroundImage: "landing/hero-background.jpg",
     logoImage: "landing/hero-logo.svg",
-    socialMedia: [{ className: "fab fa-instagram" }],
+    socialMedia: [
+      {
+        className: "fab fa-instagram",
+        href: "https://www.instagram.com/bertoni.gisele/?hl=pt-br",
+      },
+    ],
     callToAction: {
       id: "Setmore_button_iframe",
       text: "Agende seu Horário",

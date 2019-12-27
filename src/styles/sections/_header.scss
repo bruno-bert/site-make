@@ -1,24 +1,26 @@
 header {
+  $header-bg: rgba(mix(white, transparent, 95), 0.7);
+
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0.8em 0;
+  padding: 0.2em 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   z-index: 2;
-  background-color: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: $header-bg;
+  border-bottom: 1px solid rgba($dark-text-color, 0.2);
   overflow: hidden;
 
   .logo {
-    margin-top: 1em;
+    margin-top: 0;
     margin-left: 2em;
   }
 
   .navbar {
-    margin-top: 1em;
+    margin-top: 0.7em;
     margin-right: 2em;
 
     ul {
@@ -27,8 +29,9 @@ header {
         float: left;
 
         a {
-          color: set-text-color($background-color);
+          color: set-text-color($header-bg);
           text-transform: uppercase;
+          font-size: 1.1rem;
           font-weight: 400;
           background: transparent;
           border-bottom: 2px solid transparent;
@@ -37,9 +40,9 @@ header {
         }
 
         a:hover {
-          color: $secondary-color;
-          font-weight: 600;
+          color: $primary-color;
           @include easeOut;
+          font-weight: 500;
         }
       }
     }
@@ -65,12 +68,13 @@ header {
       }
     }
 
-    background: $secondary-color;
+    background: $primary-color;
     display: block;
     position: fixed;
     height: 40px;
     right: 15%;
-    top: 33px;
+    top: 0;
+    margin-top: 1.4em;
     width: 46px;
     z-index: 9999;
     border-radius: 5px;

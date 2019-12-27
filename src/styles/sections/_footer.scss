@@ -1,0 +1,21 @@
+footer {
+  z-index: 2;
+  background-color: green;
+  overflow: hidden;
+}
+
+//SmartPhones
+@include mediaMobile {
+}
+
+//Tablets and Small Laptops
+@include mediaTablet {
+}
+
+//Desktops and Laptops
+@include mediaLaptop {
+}
+
+//Wide Screens
+@include mediaDesktop {
+}

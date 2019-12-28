@@ -1,6 +1,8 @@
 import React from "react"
 import Gallery from "./Gallery"
-import { useImages } from "../hooks/use-images"
+import { useImages } from "../../hooks/use-images"
+import GalleryStyle from "./styles"
+import { ParseOnSuccess } from "../../helpers"
 
 export default function GalleryPage(props) {
   const data = props.data
@@ -15,8 +17,12 @@ export default function GalleryPage(props) {
       String(node.relativePath).includes(data.galleryPath + "/")
   )
 
+  /** merge global styles with component styles */
+  const galleryStyle = data.styles && ParseOnSuccess(data.styles.galleryStyle)
+  const styles = { ...globalStyles, ...galleryStyle }
+
   return (
-    <React.Fragment>
+    <GalleryStyle id="gallery" className="gallery" styles={styles}>
       <div className="header">
         {data.title && <h3>{data.title}</h3>}
         {data.subtitle && <h5>{data.subtitle}</h5>}
@@ -29,6 +35,6 @@ export default function GalleryPage(props) {
         }))}
         itemsPerRow={[2, 3]}
       />
-    </React.Fragment>
+    </GalleryStyle>
   )
 }

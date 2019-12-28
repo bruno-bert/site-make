@@ -4,6 +4,7 @@ import { useState } from "react"
 import PropTypes from "prop-types"
 import Image from "../Image"
 import HeaderStyle from "./styles"
+import { ParseOnSuccess } from "../../helpers"
 
 const Header = props => {
   const data = props.data
@@ -34,15 +35,13 @@ const Header = props => {
   }
 
   const logoStyle = data.styles && data.styles.logoStyle
-  const headerStyle = data.styles && data.styles.headerStyle
+
+  /** merge global styles with component styles */
+  const headerStyle = data.styles && ParseOnSuccess(data.styles.headerStyle)
+  const styles = { ...globalStyles, ...headerStyle }
 
   return (
-    <HeaderStyle
-      id="header"
-      className="header"
-      css={headerStyle}
-      styles={globalStyles}
-    >
+    <HeaderStyle id="header" className="header" styles={styles}>
       <div id="logo-placeholder">
         {data.logoImage && (
           <Image

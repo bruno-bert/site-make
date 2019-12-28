@@ -38,4 +38,12 @@ const carouselFormatters = {
 }
 export default carouselFormatters
 
-//export { chunk }
+export const ParseOnSuccess = str => {
+  try {
+    if (String(str).length() !== 0) return JSON.parse(str)
+    else return null
+  } catch (error) {
+    console.warn("Error on trying to parse the string: " + str)
+    return null
+  }
+}

@@ -6,6 +6,29 @@ export const metaData = graphql`
       description
       author
       siteUrl
+
+      postBodyComponents {
+        scripts {
+          id
+          src
+        }
+
+        stylesheets {
+          href
+        }
+      }
+
+      headComponents {
+        scripts {
+          id
+          src
+        }
+
+        stylesheets {
+          href
+        }
+      }
+
       globalStyles {
         typography {
           fontFamily

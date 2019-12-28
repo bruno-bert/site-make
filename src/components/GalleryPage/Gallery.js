@@ -1,7 +1,7 @@
 import React, { useState } from "react"
 import Carousel, { Modal, ModalGateway } from "react-images"
 import { Box, Link } from "rebass"
-import { chunk, sum, carouselFormatters } from "../helpers"
+import { chunk, sum, carouselFormatters } from "../../helpers"
 import GatsbyImage from "gatsby-image"
 
 const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
@@ -49,8 +49,10 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
               (rowAspectRatioSums, j) => {
                 const rowIndex = Math.floor(i / itemsPerRowByBreakpoints[j])
                 const rowAspectRatioSum = rowAspectRatioSums[rowIndex]
-
-                return `${(image.aspectRatio / rowAspectRatioSum) * 100}%`
+                const result = `${(image.aspectRatio / rowAspectRatioSum) *
+                  100}%`
+                console.log("width: ", result)
+                return result
               }
             )}
             css={`

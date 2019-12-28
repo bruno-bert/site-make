@@ -33,7 +33,8 @@
     "styled-components": "^4.0.0"
   },
   "devDependencies": {
-    "prettier": "^1.19.1"
+    "prettier": "^1.19.1",
+    "svg-to-react-cli": "^1.5.0"
   },
   "keywords": [
     "gatsby"
@@ -41,6 +42,7 @@
   "license": "MIT",
   "scripts": {
     "optimg": "node \"src/scripts/optimize-images.js\"",
+    "svgtoreact": "cd ./src/images/landing && svgtoreact dir --output ../../components/svg",
     "build": "gatsby build",
     "develop": "gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",

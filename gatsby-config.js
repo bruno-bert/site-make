@@ -1,4 +1,7 @@
+require("dotenv")
+
 const cms = require("./src/data/cms")
+
 module.exports = {
   siteMetadata: {
     ...cms,
@@ -24,7 +27,7 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sitemap`,
-    `gatsby-plugin-styled-components`,
+
     {
       resolve: `gatsby-plugin-canonical-urls`,
       options: {

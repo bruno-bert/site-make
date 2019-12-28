@@ -4,9 +4,9 @@ module.exports = {
   className: "header",
   header: {
     styles: {
-      headerStyle: "{background: #000; opacity: 0.3;}", //this is a string
-      navStyle: "", //this is an object
-      logoStyle: '{"width": "64px", "height": "64px"}', //this is an object
+      headerStyle: ``,
+      navStyle: ``,
+      logoStyle: `{"width": "64px", "height": "64px"}`,
     },
     logoImage: "landing/sidelogo.svg",
     links: [

@@ -3,6 +3,9 @@ import styled from "styled-components"
 export default styled.header.attrs(props => ({
   id: props.id,
 }))`
+  background: ${props => props.styles && props.styles.background};
+  opacity: ${props => props.styles && props.styles.opacity};
+
   .navbar {
     ul {
       li {

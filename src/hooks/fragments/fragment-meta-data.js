@@ -6,6 +6,8 @@ export const metaData = graphql`
       description
       author
       siteUrl
+      email
+      theme
 
       postBodyComponents {
         scripts {
@@ -44,46 +46,51 @@ export const metaData = graphql`
         }
       }
 
-      sections {
-        id
-        type
-        header {
-          styles {
-            headerStyle
-            navStyle
-            logoStyle
+      pages {
+        path
+        name
+
+        sections {
+          id
+          type
+          header {
+            styles {
+              headerStyle
+              navStyle
+              logoStyle
+            }
+            logoImage
+            links {
+              id
+              description
+              href
+            }
           }
-          logoImage
-          links {
-            id
-            description
-            href
+          hero {
+            styles {
+              logoStyle
+              titleStyle
+              subTitleStyle
+            }
+            title
+            subTitle
+            backgroundImage
+            logoImage
+            socialMedia {
+              className
+              href
+            }
+            callToAction {
+              id
+              text
+              href
+            }
           }
-        }
-        hero {
-          styles {
-            logoStyle
-            titleStyle
-            subTitleStyle
+          gallery {
+            title
+            subtitle
+            galleryPath
           }
-          title
-          subTitle
-          backgroundImage
-          logoImage
-          socialMedia {
-            className
-            href
-          }
-          callToAction {
-            id
-            text
-            href
-          }
-        }
-        gallery {
-          title
-          subtitle
-          galleryPath
         }
       }
     }

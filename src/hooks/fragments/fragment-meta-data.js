@@ -8,6 +8,7 @@ export const metaData = graphql`
       siteUrl
       email
       theme
+      blogPrefix
 
       postBodyComponents {
         scripts {
@@ -90,6 +91,13 @@ export const metaData = graphql`
             title
             subtitle
             galleryPath
+          }
+
+          blog {
+            styles {
+              titleStyle
+              subTitleStyle
+            }
           }
         }
       }

@@ -5,12 +5,17 @@ module.exports = [
   {
     name: "index",
     path: "/",
-    sections: [header, require("./hero"), footer],
+    sections: [header, require("./hero"), require("./gallery"), footer],
   },
 
   {
-    name: "gallery",
-    path: "/work",
-    sections: [header, require("./gallery"), footer],
+    name: "blog",
+    path: "/blog",
+    sections: [header, require("./blog"), footer],
+  },
+
+  {
+    name: "post",
+    sections: [header, footer],
   },
 ]

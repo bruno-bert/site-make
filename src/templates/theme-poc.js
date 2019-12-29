@@ -5,13 +5,16 @@ import Header from "../components/Header"
 import Hero from "../components/Hero"
 import GalleryPage from "../components/GalleryPage"
 import Footer from "../components/Footer"
+import Blog from "../components/Blog"
+import Post from "../components/Blog/Post"
 import SectionWrapper from "../components/SectionWrapper"
-
 
 export default props => {
   const globalStyles = props.pageContext.meta.globalStyles
   const sections = props.pageContext.sections
+  const postInfo = props.pageContext.postInfo 
 
+  
   const meta = sections.map(item => {
     item[item.type] = { ...item[item.type], globalStyles }
     return item
@@ -45,7 +48,18 @@ export default props => {
           data={item[item.type]}
         >
           {item.type === "hero" && <Hero data={item[item.type]} />}
+          {item.type === "blog" && (
+            <Blog
+              blogPrefix={props.pageContext.meta.blogPrefix}
+              data={item[item.type]}
+            />
+          )}
           {item.type === "gallery" && <GalleryPage data={item[item.type]} />}
+
+
+          {item.type === "post" && postInfo && <Post postInfo={postInfo} data={item[item.type]} />}
+          
+
         </SectionWrapper>
       ))}
 

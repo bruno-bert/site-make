@@ -13,4 +13,5 @@ module.exports = {
   headComponents: headComponents,
   theme: "theme-poc",
   pages: pages,
+  blogPrefix: "/blog/posts",
 }

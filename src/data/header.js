@@ -12,7 +12,8 @@ module.exports = {
     links: [
       { id: "home", description: "Home", href: "#home" },
       { id: "about", description: "Sobre Mim", href: "#about" },
-      { id: "work", description: "Meu Trabalho", href: "/work" },
+      { id: "work", description: "Meu Trabalho", href: "#work" },
+      { id: "blog", description: "Blog", href: "/blog" },
       { id: "contact", description: "Contato", href: "#contact" },
     ],
   },

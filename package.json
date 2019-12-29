@@ -31,7 +31,12 @@
     "react-images": "^1.0.0",
     "react-svg": "^11.0.3",
     "rebass": "^3.0.0",
-    "styled-components": "^4.0.0"
+    "styled-components": "^4.0.0",
+    "gatsby-remark-autolink-headers": "^2.0.16",
+    "gatsby-remark-images": "^3.0.10",
+    "gatsby-remark-prismjs": "^3.2.6",
+    "prismjs": "^1.16.0",
+    "gatsby-remark-emoji-unicode": "^0.1.0"
   },
   "devDependencies": {
     "prettier": "^1.19.1",

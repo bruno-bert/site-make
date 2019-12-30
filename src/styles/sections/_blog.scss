@@ -1,15 +1,153 @@
+/** variables */
+$blog-bg-color: #fafafa;
+$blog-bg-element-color: #fafafa;
+
 .blog {
- 
+  width: 100%;
+  margin: 0 auto;
+  margin-top: 68px;
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-align: center;
+  background-color: $blog-bg-color;
+  
+  h1 {
+    margin: 0 3%;
+    font-family: $font-family-secondary;
+    font-size: 3em;
+    font-weight: 400;
+    letter-spacing: 2px;
+    color: set-text-color($blog-bg-color);
+
+    span {
+      color: $primary-color;
+      font-weight: 500;
+    }
+  }
+
+
+
+  p {
+    margin-top: 1em;
+    font-family: $font-family-secondary;
+    font-size: 1rem;
+    color: set-text-color($blog-bg-color);
+    transition: all 0.4s;
+
+   
+  }
+
+  .blog-list-element{
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 3%;
+    padding: 1em;
+    width: 90%;
+    border-radius: .5em;
+    box-shadow: -12px -12px 12px 0 rgba(255,255,255,1),
+    12px 12px 12px 0 rgba(0,0,0,.03);
+    text-align: center;
+    height: 100%;
+    background-color: $blog-bg-element-color;
+    overflow: hidden;
+    
+
+    .blog-list-element-cover-image{
+     
+     
+      flex-grow: 0;     
+      flex-shrink: 0;   
+      flex-basis: 30em; 
+    
+    
+    }
+
+    .blog-list-element-content{
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      text-align: left;
+      width: 80%;
+      height: 100%;
+      margin-left: 5%;
+  
+
+      .blog-list-title{
+        font-family: $font-family;
+        font-weight: 600;
+        font-size: 1.7rem;
+        text-decoration: none;
+        
+      }
+
+      .blog-list-author{
+        
+      }
+      .blog-list-description{
+        margin-top: 3rem;
+        font-weight: 500;
+      }
+
+      .blog-list-excerpt{
+        font-style: italic;
+        margin-top: 3rem;
+      }
+
+    }
+    
+   
+
+    
+
+   
+   
+  }
+
 }
 
 //Tablets and Small Laptops
-@include mediaTablet {
+@media screen and  (max-width: 1200px ) {
+  .blog {
+    .blog-list-element{
+      flex-flow: row wrap;
+      width: 60%;
+      justify-content: center;
+      
+      .blog-list-element-cover-image{
+        flex-basis: 40em;           
+       }
+
+       .blog-list-element-content {
+        margin-left: 0;
+        width: 100%;
+        margin-top: 2%;
+        
+       }
+
+    }  
+     
+   
+  }
+ 
 }
 
-//Desktops and Laptops
-@include mediaLaptop {
-}
+@media screen and  (max-width: 600px ) {
+  .blog {
+    .blog-list-element{
 
-//Wide Screens
-@include mediaDesktop {
+      width: 80%;
+
+      .blog-list-title {
+        font-size: 0.8rem;
+      }
+      .blog-list-excerpt{
+        display: none;
+      }
+    }
+  }
 }

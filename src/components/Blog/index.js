@@ -9,11 +9,27 @@ export default function Blog(props) {
   const blogPrefix = props.blogPrefix
   const globalStyles = data.globalStyles
 
+  const CONFIG = {
+    countOfInitiallyShownPosts: 2,
+    countOfPostsDynamicallyAdded: 2    
+  }
+
+  const locale = {
+    by: 'By',
+    on: 'on'
+  }
+  
+  
+  const [ticking, setTicking] = useState(false)
+  const [postsToShow, setPostsToShow] = useState(CONFIG.countOfInitiallyShownPosts)
+
+
+
   /** get posts from data cms */
   const posts = usePosts()
-  const listOfPosts = posts.allMarkdownRemark.edges
+  const listOfPosts = posts.allMarkdownRemark.edges 
   const totalCount = posts.allMarkdownRemark.edges.totalCount
-
+  
   const titleStyle =
     data.styles && data.styles.titleStyle
       ? JSON.parse(data.styles.titleStyle)
@@ -24,23 +40,37 @@ export default function Blog(props) {
       ? JSON.parse(data.styles.subTitleStyle)
       : null
 
+   
+  /** component did mount */      
+  useEffect( () =>{
+   
+    window.addEventListener(`scroll`, handleScroll)
+    window.addEventListener('resize', handleScroll)
+    window.addEventListener('touchend', handleTouchEnd)
 
-  const [ticking, setTicking] = useState(false)
-  
-  const CONFIG = {
-    countOfInitiallyShownPosts: 5,
-    countOfPostsDynamicallyAdded: 5,
-    offsetHeightToTriggerLoading: 20,
-  }
+     /** component did unmount */
+    return () => {
+      window.removeEventListener(`scroll`, handleScroll)
+      window.removeEventListener('resize', handleScroll)
+      window.removeEventListener('touchend', handleTouchEnd)
+    }
+
+  } , [])
 
   const update = () => {
-    const distanceToBottom =
-      document.documentElement.offsetHeight -
-      (window.scrollY + window.innerHeight)
-    if (distanceToBottom < CONFIG.offsetHeightToTriggerLoading) {
-      blogPostStore.add()
+
+    
+    if ( window && ( window.innerHeight + document.documentElement.scrollTop >= document.documentElement.offsetHeight ) ){
+      setPostsToShow((prev) => prev + CONFIG.countOfPostsDynamicallyAdded )
     }
-    this.ticking = false
+
+    setTicking(false)
+
+  }
+
+  const handleTouchEnd = (e) => {
+    e.preventDefault(); 
+    handleScroll();
   }
 
   const handleScroll = () => {
@@ -50,36 +80,21 @@ export default function Blog(props) {
     }
   }
 
-  /** component did mount */ 
-  useEffect( () =>{
-    window.addEventListener(`scroll`, handleScroll)
-  } , [])
-
-  /** component did unmount */
-  useEffect(() => {
-    return () => {
-      console.log('will unmount');
-      window.addEventListener(`scroll`, handleScroll)
-    }
-  }, []);
-
-
-  
-
   return (
     <BlogStyle id="blog" className="blog" styles={globalStyles}>
       <h1 style={titleStyle} dangerouslySetInnerHTML={{ __html: data.title }} />
       <p style={subTitleStyle}>{data.subtitle}</p>
 
       
-        {listOfPosts.slice(0, blogPostStore.postsToShow).map(({ node }) => {
+        {listOfPosts.slice(0, postsToShow).map(({ node }) => (
          
-          return (
-            <BlogListElement key={node.id} data={
+          
+            <BlogListElement key={node.id} locale={locale}  data={
               { 
                 path: `${blogPrefix}${node.frontmatter.path}`,
                 date: node.frontmatter.date,
                 title: node.frontmatter.title,
+                author: node.frontmatter.author,
                 description: node.frontmatter.description,
                 excerpt: node.excerpt,
                 coverImage:
@@ -89,9 +104,9 @@ export default function Blog(props) {
                     : null,
               }
             } /> 
-          )
+          
 
-        })}
+        ))}
      
     </BlogStyle>
   )

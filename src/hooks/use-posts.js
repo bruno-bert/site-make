@@ -17,6 +17,7 @@ export const usePosts = () => {
               description
               date
               author
+              keywords
               cover {
                 childImageSharp {
                   ... on ImageSharp {

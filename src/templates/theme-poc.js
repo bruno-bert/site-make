@@ -12,8 +12,9 @@ import SectionWrapper from "../components/SectionWrapper"
 export default props => {
   const globalStyles = props.pageContext.meta.globalStyles
   const sections = props.pageContext.sections
+  const keywords = props.pageContext.keywords 
   const postInfo = props.pageContext.postInfo 
-
+  const locale =  props.pageContext.locale 
   
   const meta = sections.map(item => {
     item[item.type] = { ...item[item.type], globalStyles }
@@ -33,11 +34,11 @@ export default props => {
 
   return (
     <Layout>
-      <SEO />
+      <SEO keywords={keywords}/>
 
       {/** header section */}
       {headerSection &&
-        headerSection.map(item => <Header key={item.id} data={item.header} />)}
+        headerSection.map(item => <Header key={item.id} data={item.header} locale={locale} />)}
 
       {/** other sections */}
       {otherSections.map(item => (
@@ -46,18 +47,23 @@ export default props => {
           id={item.id}
           className={item.className || item.type}
           data={item[item.type]}
+          locale={locale}
         >
-          {item.type === "hero" && <Hero data={item[item.type]} />}
+          {item.type === "hero" && <Hero data={item[item.type]} locale={locale}/>}
           {item.type === "blog" && (
             <Blog
               blogPrefix={props.pageContext.meta.blogPrefix}
               data={item[item.type]}
+              locale={locale}
             />
           )}
-          {item.type === "gallery" && <GalleryPage data={item[item.type]} />}
+          {item.type === "gallery" && <GalleryPage data={item[item.type]} locale={locale}/>}
 
 
-          {item.type === "post" && postInfo && <Post postInfo={postInfo} data={item[item.type]} />}
+          {item.type === "post" && postInfo && <Post 
+          blogHome={props.pageContext.blogHome}
+          blogPrefix={props.pageContext.meta.blogPrefix} 
+          postInfo={postInfo} data={item[item.type]} locale={locale}/>}
           
 
         </SectionWrapper>
@@ -65,7 +71,7 @@ export default props => {
 
       {/** footer section */}
       {footerSection &&
-        footerSection.map(item => <Footer key={item.id} data={item.footer} />)}
+        footerSection.map(item => <Footer key={item.id} data={item.footer} locale={locale}/>)}
     </Layout>
   )
 }

@@ -4,6 +4,7 @@ date: "29-12-2019"
 author: Bruno de Paula
 title: "Meu Segundo Post"
 description: "Testando blog no gatsby - post 2"
+keywords: "teste9, teste10"
 cover: "post2.jpg"
 ---
 

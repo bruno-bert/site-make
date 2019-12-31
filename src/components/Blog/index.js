@@ -8,17 +8,15 @@ export default function Blog(props) {
   const data = props.data
   const blogPrefix = props.blogPrefix
   const globalStyles = data.globalStyles
+  const locale = props.locale
 
   const CONFIG = {
     countOfInitiallyShownPosts: 2,
     countOfPostsDynamicallyAdded: 2    
   }
 
-  const locale = {
-    by: 'By',
-    on: 'on'
-  }
-  
+
+
   
   const [ticking, setTicking] = useState(false)
   const [postsToShow, setPostsToShow] = useState(CONFIG.countOfInitiallyShownPosts)
@@ -86,10 +84,10 @@ export default function Blog(props) {
       <p style={subTitleStyle}>{data.subtitle}</p>
 
       
-        {listOfPosts.slice(0, postsToShow).map(({ node }) => (
+        {listOfPosts.slice(0, postsToShow).map(({ node }, index) => (
          
           
-            <BlogListElement key={node.id} locale={locale}  data={
+            <BlogListElement index={index} locale={locale}  data={
               { 
                 path: `${blogPrefix}${node.frontmatter.path}`,
                 date: node.frontmatter.date,

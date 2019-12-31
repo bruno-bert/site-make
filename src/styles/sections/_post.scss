@@ -1,4 +1,146 @@
+/** variables */
+$post-bg-color: #fafafa;
+$post-bg-element-color: #fafafa;
+
+
 .post {
+    width: 100%;
+    margin: 0 auto;
+    margin-top: 68px;
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    
+    background-color: $post-bg-color;
+    
+    .post-content{
+
+        width: 70%;
+
+        h1 {
+            margin: 0 3%;
+            font-family: $font-family;
+            font-size: 3em;
+            font-weight: 400;
+            text-align: center;
+            letter-spacing: 2px;
+            color: set-text-color($post-bg-color);
+        }
+    
+        p {
+            margin-top: 2rem;
+            font-family: $font-family-secondary;
+            font-size: 1.2rem;
+            color: set-text-color($blog-bg-color); 
+            
+            &:last-child {
+                font-size: 3rem;
+              }
+
+          }
+
+
+        
+
+       
+
+          
+
+    }
+
+   
+      .posts-navigation{
+          
+      
+        margin: 2rem 0;
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 70%;
+          padding: 2rem;
+
+          a {
+
+            padding: .4rem 2rem;
+            font-size: 0.8rem;
+            text-decoration: none;
+            background: $primary-color;
+            color: $light-text-color;
+            font-weight: 400;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+            display: block;
+            border-radius: 34px;
+            text-transform: uppercase;
+            font-family: $font-family-secondary;
+            margin-top: 1.5rem;
+            text-align: center;
+
+            &.hide {
+                display: none;
+            }
+
+
+            
+                .fas {
+                    padding: 1rem; 
+                }  
+            
+          
+
+          }
+
+               
+          
+
+               
+          
+
+        
+
+      }
+
+    
+
+
+
+}
+
+
+@media screen and  (max-width: 1200px ) {
+
+    
+
+  .post {
+    .posts-navigation {
+        width: 100%;
+        a {
+
+            flex-grow: 0;
+            flex-shrink: 0;
+            flex-basis: 64px;
+
+            span {
+                display: none;
+            }
+            
+            margin: 10px; 
+            border-radius: 50%;
+            
+            .fas {
+                text-align: center;
+                font-size: 1.5rem; 
+            }  
+    
+        }
+
+        
+    }
+  }
+
+   
   
 }
 

@@ -4,10 +4,11 @@ date: "29-12-2019"
 author: Bruno de Paula
 title: "Meu Primeiro Post"
 description: "Testando blog no gatsby - post 1"
+keywords: "teste1, teste2"
 cover: "post1.jpg"
 ---
 
-# Bem Vindo
+# Meu Primeiro Post
 
 **Bem vindos**, este é meu primeiro post.
 

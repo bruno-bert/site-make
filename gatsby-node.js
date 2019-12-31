@@ -20,6 +20,7 @@ exports.createPages = ({ actions, graphql }) => {
               description
               date
               author
+              keywords
               cover {
                 childImageSharp {
                   ... on ImageSharp {
@@ -95,6 +96,17 @@ exports.createPages = ({ actions, graphql }) => {
           pages {
             path
             name
+            blogHome
+
+            locale {
+              on
+              by
+              home
+              prev
+              next
+              readmore
+            }
+
 
             sections {
               id
@@ -169,6 +181,7 @@ exports.createPages = ({ actions, graphql }) => {
           component: template,
           context: {
             sections: page.sections,
+            locale: page.locale,
             meta,
           },
         })
@@ -184,16 +197,24 @@ exports.createPages = ({ actions, graphql }) => {
       const postPage = postPages[0]
       const posts = res.data.allMarkdownRemark.edges
       let pagePath = ""
-      posts.map(({ node }) => {
+      posts.map(({ node }, index) => {
         pagePath = `${blogPrefix}${node.frontmatter.path}`
   
+        const prev = index === 0 ? false : posts[index - 1].node
+        const next = index === posts.length - 1 ? false : posts[index + 1].node
+
+        
+
         createPage({
           path: pagePath,
           component: template,
           context: {
-            postInfo: node,
+            postInfo: { ...node, prev, next },
+            keywords: node.frontmatter.keywords,
+            blogHome: postPage.blogHome || "/blog",
             sections: [ ...postPage.sections, { id: "post", type: "post" }],
             coverImageMaxWidth: BLOG_POST_COVER_IMAGE_MAX_WIDTH,
+            locale: postPage.locale,
             meta,
           },
         })

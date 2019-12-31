@@ -50,6 +50,15 @@ export const metaData = graphql`
       pages {
         path
         name
+        blogHome
+        locale {
+          on
+          by
+          home
+          prev
+          next
+          readmore
+        }
 
         sections {
           id

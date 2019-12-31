@@ -16,7 +16,7 @@ $blog-bg-element-color: #fafafa;
   
   h1 {
     margin: 0 3%;
-    font-family: $font-family-secondary;
+    font-family: $font-family;
     font-size: 3em;
     font-weight: 400;
     letter-spacing: 2px;
@@ -44,13 +44,19 @@ $blog-bg-element-color: #fafafa;
     display: flex;
     flex-flow: row;
     align-items: center;
-    justify-content: flex-start;
-    margin-top: 3%;
-    padding: 1em;
+    justify-content: space-between;    
     width: 90%;
-    border-radius: .5em;
-    box-shadow: -12px -12px 12px 0 rgba(255,255,255,1),
-    12px 12px 12px 0 rgba(0,0,0,.03);
+
+    /* without shadow*/ 
+    border-bottom: 2px solid #ededed;
+    padding: 5rem 1rem;
+
+    /* with shadow (card style)*/ 
+    //border-radius: .5em;
+    //box-shadow: -12px -12px 12px 0 rgba(255,255,255,1),
+    //12px 12px 12px 0 rgba(0,0,0,.03);
+    //margin-top: 2%;
+
     text-align: center;
     height: 100%;
     background-color: $blog-bg-element-color;
@@ -59,23 +65,52 @@ $blog-bg-element-color: #fafafa;
 
     .blog-list-element-cover-image{
      
-     
+      border: 1px solid black;
       flex-grow: 0;     
       flex-shrink: 0;   
       flex-basis: 30em; 
+      order: 1;
+      box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.3);
+     
+      &.inverse {
+        order: 2;
+      }
     
-    
+    }
+
+    .blog-list-button{
+      padding: .8rem 3rem;
+      text-decoration: none;
+      background: $primary-color;
+      color: $light-text-color;
+      font-weight: 500;
+      border: 1px solid rgba(0, 0, 0, 0.05);
+      box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.07);
+      display: block;
+      border-radius: 34px;
+      text-transform: uppercase;
+      font-family: $font-family-secondary;
+      margin-top: 1.5rem;
+      
+     
+
     }
 
     .blog-list-element-content{
       display: flex;
-      align-items: center;
+      flex-direction: column;
+      align-items: flex-start;
       padding: 1rem;
       text-align: left;
-      width: 80%;
+      width: 70%;
       height: 100%;
-      margin-left: 5%;
-  
+      
+      order: 2;
+
+      &.inverse {
+        order: 1;
+      }
+
 
       .blog-list-title{
         font-family: $font-family;

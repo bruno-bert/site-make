@@ -14,7 +14,29 @@ $post-bg-element-color: #fafafa;
     overflow: hidden;
     
     background-color: $post-bg-color;
-    
+
+    .gatsby-image-wrapper{
+        width: 70%;
+        border: 1px solid black;
+        margin-bottom: 2%;
+        box-shadow: 0 3px 5px 1px rgba(0, 0, 0, 0.3);
+    }
+
+    @include disqus;
+   
+    .post-info{
+        display: flex;
+        flex-direction: row;
+        width: 70%;
+        justify-content: flex-start;
+
+       
+
+        p{
+            font-family: $font-family-secondary;
+            font-style: italic;
+        }
+    }
     .post-content{
 
         width: 70%;
@@ -35,13 +57,17 @@ $post-bg-element-color: #fafafa;
             font-size: 1.2rem;
             color: set-text-color($blog-bg-color); 
             
-            &:last-child {
-                font-size: 3rem;
-              }
+         
 
           }
 
 
+
+          .post-comments-not-supported{
+              font-size: 5rem;
+          }
+
+          
         
 
        

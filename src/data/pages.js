@@ -24,6 +24,7 @@ module.exports = [
   {
     name: "post",
     blogHome: "/blog",
+    commentsProvider: "disqus",
     sections: [header, footer],
     locale: {
       on: 'on',

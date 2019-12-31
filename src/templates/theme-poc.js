@@ -62,6 +62,7 @@ export default props => {
 
           {item.type === "post" && postInfo && <Post 
           blogHome={props.pageContext.blogHome}
+          commentsProvider={props.pageContext.commentsProvider}
           blogPrefix={props.pageContext.meta.blogPrefix} 
           postInfo={postInfo} data={item[item.type]} locale={locale}/>}
           

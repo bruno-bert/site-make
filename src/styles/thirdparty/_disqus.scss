@@ -1,0 +1,15 @@
+@mixin disqus {
+    
+
+    #disqus_thread{
+        width: 70%;
+        .post-message {
+            p {
+                font-family: $font-family-secondary;
+            }
+            
+        }
+    }
+
+    
+}

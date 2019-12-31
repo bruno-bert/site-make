@@ -51,6 +51,7 @@ export const metaData = graphql`
         path
         name
         blogHome
+        commentsProvider
         locale {
           on
           by

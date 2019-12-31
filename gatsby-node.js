@@ -97,6 +97,7 @@ exports.createPages = ({ actions, graphql }) => {
             path
             name
             blogHome
+            commentsProvider
 
             locale {
               on
@@ -211,6 +212,7 @@ exports.createPages = ({ actions, graphql }) => {
           context: {
             postInfo: { ...node, prev, next },
             keywords: node.frontmatter.keywords,
+            commentsProvider: postPage.commentsProvider, 
             blogHome: postPage.blogHome || "/blog",
             sections: [ ...postPage.sections, { id: "post", type: "post" }],
             coverImageMaxWidth: BLOG_POST_COVER_IMAGE_MAX_WIDTH,

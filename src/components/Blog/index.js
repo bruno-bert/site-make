@@ -87,7 +87,7 @@ export default function Blog(props) {
         {listOfPosts.slice(0, postsToShow).map(({ node }, index) => (
          
           
-            <BlogListElement index={index} locale={locale}  data={
+            <BlogListElement key={index} index={index} locale={locale}  data={
               { 
                 path: `${blogPrefix}${node.frontmatter.path}`,
                 date: node.frontmatter.date,

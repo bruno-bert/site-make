@@ -59,6 +59,13 @@ export const metaData = graphql`
           prev
           next
           readmore
+          mail
+          name
+          subject
+          message
+          submit
+          reset
+
         }
 
         sections {
@@ -109,6 +116,16 @@ export const metaData = graphql`
               subTitleStyle
             }
           }
+
+          contact {
+            title
+            subtitle
+            styles {
+              titleStyle
+              subTitleStyle
+            }
+          }
+
         }
       }
     }

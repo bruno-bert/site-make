@@ -1,5 +1,7 @@
 const path = require("path")
 
+
+
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions
   const BLOG_POST_COVER_IMAGE_MAX_WIDTH = 800
@@ -106,6 +108,12 @@ exports.createPages = ({ actions, graphql }) => {
               prev
               next
               readmore
+              mail
+              name
+              subject
+              message
+              submit
+              reset
             }
 
 
@@ -159,6 +167,16 @@ exports.createPages = ({ actions, graphql }) => {
                   subTitleStyle
                 }
               }
+
+              contact {
+                title
+                subtitle
+                styles {
+                  titleStyle
+                  subTitleStyle
+                }
+              }
+
             }
           }
         }
@@ -212,7 +230,7 @@ exports.createPages = ({ actions, graphql }) => {
           context: {
             postInfo: { ...node, prev, next },
             keywords: node.frontmatter.keywords,
-            commentsProvider: postPage.commentsProvider, 
+            commentsProvider: postPage.commentsProvider !== "none" ? postPage.commentsProvider : null , 
             blogHome: postPage.blogHome || "/blog",
             sections: [ ...postPage.sections, { id: "post", type: "post" }],
             coverImageMaxWidth: BLOG_POST_COVER_IMAGE_MAX_WIDTH,

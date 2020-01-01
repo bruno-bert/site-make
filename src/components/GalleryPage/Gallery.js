@@ -51,7 +51,6 @@ const Gallery = ({ images, itemsPerRow: itemsPerRowByBreakpoints = [1] }) => {
                 const rowAspectRatioSum = rowAspectRatioSums[rowIndex]
                 const result = `${(image.aspectRatio / rowAspectRatioSum) *
                   100}%`
-                console.log("width: ", result)
                 return result
               }
             )}

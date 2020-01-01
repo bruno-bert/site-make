@@ -6,6 +6,7 @@
   "author": "Bruno Bertoni <bruno.bert.jj@gmail.com>",
   "dependencies": {
     "disqus-react": "^1.0.7",
+    "formik": "^2.1.0",
     "gatsby": "^2.17.11",
     "gatsby-background-image": "^0.9.7",
     "gatsby-image": "^2.2.31",
@@ -37,7 +38,8 @@
     "react-images": "^1.0.0",
     "react-svg": "^11.0.3",
     "rebass": "^3.0.0",
-    "styled-components": "^4.0.0"
+    "styled-components": "^4.0.0",
+    "yup": "^0.28.0"
   },
   "devDependencies": {
     "prettier": "^1.19.1",

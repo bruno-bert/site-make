@@ -6,6 +6,7 @@ import Hero from "../components/Hero"
 import GalleryPage from "../components/GalleryPage"
 import Footer from "../components/Footer"
 import Blog from "../components/Blog"
+import Contact from "../components/Contact"
 import Post from "../components/Blog/Post"
 import SectionWrapper from "../components/SectionWrapper"
 
@@ -58,6 +59,9 @@ export default props => {
             />
           )}
           {item.type === "gallery" && <GalleryPage data={item[item.type]} locale={locale}/>}
+
+          {item.type === "contact" && <Contact data={item[item.type]} locale={locale}/>}
+
 
 
           {item.type === "post" && postInfo && <Post 

@@ -12,9 +12,6 @@ export default function SectionWrapper(props) {
     img => img.relativePath === bgImageSrc
   )
 
-  //const childrenWithProps = React.Children.map(props.children, child =>
-  //  React.cloneElement(child, { metadata: meta })
-  //)
 
   return (
     <section id={props.id} className={props.className}>
